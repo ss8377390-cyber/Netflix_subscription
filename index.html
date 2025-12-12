@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Subscription</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: #141414;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #e50914;
+        }
+        
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+        
+        input {
+            background: #333;
+            color: #fff;
+        }
+        
+        select {
+            background: #333;
+            color: #fff;
+        }
+        
+        button {
+            background: #e50914;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        button:hover {
+            background: #f6121d;
+        }
+        
+        .subscription {
+            background: #222;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Netflix Subscription</h1>
+        <input type="text" id="name" placeholder="Enter Your Name" required>
+        <input type="email" id="email" placeholder="Enter Your Email" required>
+        <select id="plan">
+        <option value="">Select Plan</option>
+        <option value="Basic">Basic - ₹299/month</option>
+        <option value="Standard">Standard - ₹499/month</option>
+        <option value="Premium">Premium - ₹649/month</option>
+    </select>
+        <button onclick="subscribe()">Subscribe Now</button>
+
+        <div class="subscription" id="subscriptionDetails">
+            <h2>Subscription Details</h2>
+            <p id="subName"></p>
+            <p id="subEmail"></p>
+            <p id="subPlan"></p>
+            <p id="subPrice"></p>
+            <p>Thank you for subscribing!</p>
+        </div>
+    </div>
+
+    <script>
+        function subscribe() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const plan = document.getElementById('plan').value;
+            if (!name || !email || !plan) {
+                alert('Please fill all fields');
+                return;
+            }
+            let price = plan === 'Basic' ? '₹299' : plan === 'Standard' ? '₹499' : '₹649';
+            document.getElementById('subName').innerText = 'Name: ' + name;
+            document.getElementById('subEmail').innerText = 'Email: ' + email;
+            document.getElementById('subPlan').innerText = 'Plan: ' + plan;
+            document.getElementById('subPrice').innerText = 'Price: ' + price;
+            document.getElementById('subscriptionDetails').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
